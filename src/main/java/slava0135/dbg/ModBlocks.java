@@ -52,6 +52,10 @@ public class ModBlocks {
   }
 
   public static void initialize() {
+    ItemGroupEvents.modifyEntriesEvent(ModItems.MOD_ITEM_GROUP_KEY).register(itemGroup -> {
+      itemGroup.add(ModBlocks.NITRA_BLOCK.asItem());
+    });
+
     ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register((itemGroup) -> {
       itemGroup.add(ModBlocks.NITRA_BLOCK.asItem());
     });
