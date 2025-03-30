@@ -3,15 +3,15 @@
 	"id": "dig-block-galactic",
 	"version": "${version}",
 	"name": "Dig Block Galactic",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Mod based on the game Deep Rock Galactic created by Ghost Ship Games",
 	"authors": [
-		"Me!"
+		"Vyacheslav (Slava0135) Kovalevsky"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/dig-block-galactic/icon.png",
 	"environment": "*",
 	"entrypoints": {
