@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NN",
+    "NN"
+  ],
+  "key": {
+    "N": "dig-block-galactic:nitra"
+  },
+  "result": {
+    "id": "dig-block-galactic:nitra_block",
+    "count": 1
+  },
+  "group": "nitra_block"
+}

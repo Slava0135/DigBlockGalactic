@@ -14,5 +14,7 @@ public class DigBlockGalactic implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("load items");
 		ModItems.initialize();
+		LOGGER.info("load blocks");
+		ModBlocks.initialize();
 	}
 }
