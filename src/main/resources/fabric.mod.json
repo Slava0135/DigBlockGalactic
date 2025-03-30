@@ -19,6 +19,9 @@
 		],
 		"client": [
 			"slava0135.dbg.DigBlockGalacticClient"
+		],
+		"fabric-datagen": [
+			"slava0135.dbg.ModDataGenerator"
 		]
 	},
 	"mixins": [
