@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NCN",
+    "NNN"
+  ],
+  "key": {
+    "N": "dig-block-galactic:nitra",
+    "C": "minecraft:coal"
+  },
+  "result": {
+    "id": "minecraft:gunpowder",
+    "count": 9
+  },
+  "group": "gunpowder"
+}
