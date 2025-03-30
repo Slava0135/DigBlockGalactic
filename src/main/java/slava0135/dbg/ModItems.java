@@ -4,6 +4,7 @@ import java.util.function.Function;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -13,7 +14,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-  public static final Item NITRA = register("nitra", Item::new, new Item.Settings());
+  public static final Item NITRA = register("nitra", BoneMealItem::new, new Item.Settings());
 
   public static Item register(String name, Function<Item.Settings, Item> itemFactory,
       Item.Settings settings) {
