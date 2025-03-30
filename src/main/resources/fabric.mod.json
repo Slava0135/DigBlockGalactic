@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "dig-block-galactic",
+	"version": "${version}",
+	"name": "Dig Block Galactic",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/dig-block-galactic/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"slava0135.dbg.DigBlockGalactic"
+		],
+		"client": [
+			"slava0135.dbg.DigBlockGalacticClient"
+		]
+	},
+	"mixins": [
+		"dig-block-galactic.mixins.json",
+		{
+			"config": "dig-block-galactic.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
