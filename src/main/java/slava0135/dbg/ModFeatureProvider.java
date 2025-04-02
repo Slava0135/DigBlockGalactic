@@ -21,8 +21,6 @@ import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 
 public class ModFeatureProvider extends FabricDynamicRegistryProvider {
-  public static final String NITRA_BLOB_FEATURE = "nitra_blob";
-
   public ModFeatureProvider(FabricDataOutput output,
       CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
     super(output, registriesFuture);
@@ -42,33 +40,29 @@ public class ModFeatureProvider extends FabricDynamicRegistryProvider {
     entries.addAll(registries.getOrThrow(RegistryKeys.PLACED_FEATURE));
   }
 
-  private static RegistryKey<ConfiguredFeature<?, ?>> configuredFeatureKey(String path) {
-    return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, id(path));
+  private static RegistryKey<ConfiguredFeature<?, ?>> configuredFeatureKey(Identifier id) {
+    return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, id);
   }
 
-  private static RegistryKey<PlacedFeature> placedFeatureKey(String path) {
-    return RegistryKey.of(RegistryKeys.PLACED_FEATURE, id(path));
-  }
-
-  private static Identifier id(String path) {
-    return Identifier.of(DigBlockGalactic.MOD_ID, path);
+  private static RegistryKey<PlacedFeature> placedFeatureKey(Identifier id) {
+    return RegistryKey.of(RegistryKeys.PLACED_FEATURE, id);
   }
 
   public static void bootstrapConfiguredFeatures(
       Registerable<ConfiguredFeature<?, ?>> registerable) {
-    registerable.register(configuredFeatureKey(NITRA_BLOB_FEATURE),
-        new ConfiguredFeature<>(DigBlockGalactic.NITRA_BLOB, DefaultFeatureConfig.INSTANCE));
+    registerable.register(configuredFeatureKey(ModFeatures.NITRA_BLOB_FEATURE_KEY),
+        new ConfiguredFeature<>(ModFeatures.NITRA_BLOB_FEATURE, DefaultFeatureConfig.INSTANCE));
   }
 
-  private static List<PlacementModifier> modifiers(PlacementModifier countModifier,
+  private static List<PlacementModifier> oreModifiers(PlacementModifier countModifier,
       PlacementModifier heightModifier) {
     return List.of(countModifier, SquarePlacementModifier.of(), heightModifier,
         BiomePlacementModifier.of());
   }
 
-  private static List<PlacementModifier> modifiersWithCount(int count,
+  private static List<PlacementModifier> oreModifiersWithCount(int count,
       PlacementModifier heightModifier) {
-    return modifiers(CountPlacementModifier.of(count), heightModifier);
+    return oreModifiers(CountPlacementModifier.of(count), heightModifier);
   }
 
   // This one adds a placed feature to the placed feature registry
@@ -78,9 +72,10 @@ public class ModFeatureProvider extends FabricDynamicRegistryProvider {
     RegistryEntryLookup<ConfiguredFeature<?, ?>> lookup =
         registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-    registerable.register(placedFeatureKey(NITRA_BLOB_FEATURE),
-        new PlacedFeature(lookup.getOptional(configuredFeatureKey(NITRA_BLOB_FEATURE)).get(),
-            modifiersWithCount(100,
+    registerable.register(placedFeatureKey(ModFeatures.NITRA_BLOB_FEATURE_KEY),
+        new PlacedFeature(
+            lookup.getOptional(configuredFeatureKey(ModFeatures.NITRA_BLOB_FEATURE_KEY)).get(),
+            oreModifiersWithCount(4,
                 HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)))));
   }
 }
