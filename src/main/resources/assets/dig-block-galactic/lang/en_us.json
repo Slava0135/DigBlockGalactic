@@ -1,5 +1,9 @@
 {
+  "item.minecraft.splash_potion.effect.fire": "Splash Potion of Fire",
+  "item.minecraft.lingering_potion.effect.fire": "Lingering Potion of Fire",
+  "item.minecraft.potion.effect.fire": "Potion of Fire",
   "item.dig-block-galactic.nitra": "Nitra",
   "item.dig-block-galactic.nitra_block": "Nitra Block",
-  "itemGroup.dig-block-galactic": "Dig Block Galactic"
+  "itemGroup.dig-block-galactic": "Dig Block Galactic",
+  "effect.dig-block-galactic.on_fire": "On Fire"
 }
