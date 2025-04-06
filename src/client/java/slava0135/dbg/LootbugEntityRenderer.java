@@ -13,7 +13,7 @@ public class LootbugEntityRenderer
     private final LootbugEntityModel babyModel;
 
     public LootbugEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new LootbugEntityModel(context.getPart(DigBlockGalacticClient.LOOTBUG)), 1f);
+        super(context, new LootbugEntityModel(context.getPart(DigBlockGalacticClient.LOOTBUG)), 0.6f);
         this.adultModel = this.model;
         this.babyModel =
                 new LootbugEntityModel(context.getPart(DigBlockGalacticClient.LOOTBUG_BABY));
