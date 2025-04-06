@@ -43,7 +43,7 @@ public class LootbugEntity extends AnimalEntity {
   @Override
   public boolean isBreedingItem(ItemStack stack) {
     return stack.isIn(ItemTags.GOLD_ORES) || stack.isIn(ItemTags.GOLD_TOOL_MATERIALS)
-        || stack.isIn(ItemTags.REPAIRS_GOLD_ARMOR);
+        || stack.isIn(ItemTags.REPAIRS_GOLD_ARMOR) || stack.isOf(ModItems.NITRA);
   }
 
   @Override
