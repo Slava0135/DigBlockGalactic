@@ -15,14 +15,13 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 public class ModItems {
 
   public static final Item NITRA = register("nitra", BoneMealItem::new, new Item.Settings());
 
-  public static final RegistryKey<ItemGroup> MOD_ITEM_GROUP_KEY = RegistryKey
-      .of(Registries.ITEM_GROUP.getKey(), Identifier.of(DigBlockGalactic.MOD_ID, "item_group"));
+  public static final RegistryKey<ItemGroup> MOD_ITEM_GROUP_KEY =
+      RegistryKey.of(Registries.ITEM_GROUP.getKey(), ModIdentifier.of("item_group"));
   public static final ItemGroup MOD_ITEM_GROUP =
       FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.NITRA))
           .displayName(Text.translatable("itemGroup.dig-block-galactic")).build();
@@ -30,7 +29,7 @@ public class ModItems {
   public static Item register(String name, Function<Item.Settings, Item> itemFactory,
       Item.Settings settings) {
     // Create the item key.
-    var itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(DigBlockGalactic.MOD_ID, name));
+    var itemKey = RegistryKey.of(RegistryKeys.ITEM, ModIdentifier.of(name));
 
     // Create the item instance.
     Item item = itemFactory.apply(settings.registryKey(itemKey));

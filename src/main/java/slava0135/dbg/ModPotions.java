@@ -7,14 +7,13 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 public class ModPotions {
   public static final Potion FIRE_POTION =
-      Registry.register(Registries.POTION, Identifier.of(DigBlockGalactic.MOD_ID, "fire"),
+      Registry.register(Registries.POTION, ModIdentifier.of("fire"),
           new Potion("fire", new StatusEffectInstance(ModEffects.ON_FIRE, 1, 0)));
   public static final Potion LONG_FIRE_POTION =
-      Registry.register(Registries.POTION, Identifier.of(DigBlockGalactic.MOD_ID, "long_fire"),
+      Registry.register(Registries.POTION, ModIdentifier.of("long_fire"),
           new Potion("fire", new StatusEffectInstance(ModEffects.ON_FIRE, 1, 1)));
 
   public static void initialize() {

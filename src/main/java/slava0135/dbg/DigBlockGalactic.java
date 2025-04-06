@@ -1,7 +1,6 @@
 package slava0135.dbg;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.entity.effect.StatusEffects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,5 +25,8 @@ public class DigBlockGalactic implements ModInitializer {
 
 		LOGGER.info("load potions");
 		ModPotions.initialize();
+
+		LOGGER.info("load entities");
+		ModEntities.initialize();
 	}
 }

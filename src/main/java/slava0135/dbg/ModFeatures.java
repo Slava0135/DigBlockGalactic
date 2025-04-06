@@ -13,8 +13,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class ModFeatures {
-  public static final Identifier NITRA_BLOB_FEATURE_KEY =
-      Identifier.of(DigBlockGalactic.MOD_ID, "nitra_blob");
+  public static final Identifier NITRA_BLOB_FEATURE_KEY = ModIdentifier.of("nitra_blob");
 
   public static final Feature<DefaultFeatureConfig> NITRA_BLOB_FEATURE =
       registerFeature(NITRA_BLOB_FEATURE_KEY, new NitraBlobFeature(DefaultFeatureConfig.CODEC));
