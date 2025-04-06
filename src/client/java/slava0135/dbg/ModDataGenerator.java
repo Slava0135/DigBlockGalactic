@@ -11,6 +11,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 		var pack = fabricDataGenerator.createPack();
 		pack.addProvider(BlockLootTableProvider::new);
 		pack.addProvider(ModFeatureProvider::new);
+		pack.addProvider(EntityLootTableProvider::new);
 	}
 
 	// Here we build registries that will be passed to our data providers.
