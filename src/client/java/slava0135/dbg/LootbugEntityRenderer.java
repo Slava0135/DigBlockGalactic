@@ -2,13 +2,13 @@ package slava0135.dbg;
 
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 // Based on `AgeableMobEntityRenderer` because it is deprecated
 public class LootbugEntityRenderer
-        extends LivingEntityRenderer<LootbugEntity, LootbugEntityRenderState, LootbugEntityModel> {
+        extends MobEntityRenderer<LootbugEntity, LootbugEntityRenderState, LootbugEntityModel> {
     private final LootbugEntityModel adultModel;
     private final LootbugEntityModel babyModel;
 
