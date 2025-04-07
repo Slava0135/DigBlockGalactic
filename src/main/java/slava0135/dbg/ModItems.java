@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -19,6 +20,8 @@ import net.minecraft.text.Text;
 public class ModItems {
 
   public static final Item NITRA = register("nitra", BoneMealItem::new, new Item.Settings());
+  public static final Item LOOTBUG_SPAWN_EGG = register("lootbug_spawn_egg",
+      (settings) -> new SpawnEggItem(ModEntities.LOOTBUG, settings), new Item.Settings());
 
   public static final RegistryKey<ItemGroup> MOD_ITEM_GROUP_KEY =
       RegistryKey.of(Registries.ITEM_GROUP.getKey(), ModIdentifier.of("item_group"));
@@ -45,6 +48,7 @@ public class ModItems {
 
     ItemGroupEvents.modifyEntriesEvent(MOD_ITEM_GROUP_KEY).register(itemGroup -> {
       itemGroup.add(ModItems.NITRA);
+      itemGroup.add(LOOTBUG_SPAWN_EGG);
     });
 
     ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
@@ -53,5 +57,8 @@ public class ModItems {
     FuelRegistryEvents.BUILD.register((builder, context) -> {
       builder.add(ModItems.NITRA, 80 * 20); // Same as coal
     });
+
+    ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS)
+        .register((itemGroup) -> itemGroup.add(LOOTBUG_SPAWN_EGG));
   }
 }

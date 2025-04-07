@@ -1,3 +1,8 @@
-- files: ["nitra.png", "nitra_block.png", "on_fire.png", "lootbug.png"]
+- files:
+    - "nitra.png"
+    - "nitra_block.png"
+    - "on_fire.png"
+    - "lootbug.png"
+    - "lootbug_spawn_egg.png"
   license: "CC BY 4.0"
   copyright: "Created by Slava0135"
