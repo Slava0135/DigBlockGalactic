@@ -1,13 +1,11 @@
 package slava0135.dbg;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -41,7 +39,7 @@ public class FlareEntity extends ThrownItemEntity {
     super.onCollision(hitResult);
     if (this.getWorld() instanceof ServerWorld serverWorld) {
       if (this.getBlockStateAtPos().isAir()) {
-        serverWorld.setBlockState(this.getBlockPos(), Blocks.TORCH.getDefaultState(),
+        serverWorld.setBlockState(this.getBlockPos(), ModBlocks.FLARE_BLOCK.getDefaultState(),
             Block.NOTIFY_LISTENERS);
       } else {
         this.dropItem(serverWorld, getDefaultItem());
