@@ -22,6 +22,7 @@ public class ModItems {
   public static final Item NITRA = register("nitra", BoneMealItem::new, new Item.Settings());
   public static final Item LOOTBUG_SPAWN_EGG = register("lootbug_spawn_egg",
       (settings) -> new SpawnEggItem(ModEntities.LOOTBUG, settings), new Item.Settings());
+  public static final Item FLARE = register("flare", FlareItem::new, new Item.Settings());
 
   public static final RegistryKey<ItemGroup> MOD_ITEM_GROUP_KEY =
       RegistryKey.of(Registries.ITEM_GROUP.getKey(), ModIdentifier.of("item_group"));
@@ -47,8 +48,9 @@ public class ModItems {
     Registry.register(Registries.ITEM_GROUP, MOD_ITEM_GROUP_KEY, MOD_ITEM_GROUP);
 
     ItemGroupEvents.modifyEntriesEvent(MOD_ITEM_GROUP_KEY).register(itemGroup -> {
-      itemGroup.add(ModItems.NITRA);
+      itemGroup.add(NITRA);
       itemGroup.add(LOOTBUG_SPAWN_EGG);
+      itemGroup.add(FLARE);
     });
 
     ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
@@ -60,5 +62,9 @@ public class ModItems {
 
     ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS)
         .register((itemGroup) -> itemGroup.add(LOOTBUG_SPAWN_EGG));
+
+    ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(itemGroup -> {
+      itemGroup.add(FLARE);
+    });
   }
 }

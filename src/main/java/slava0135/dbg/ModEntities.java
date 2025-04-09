@@ -1,6 +1,7 @@
 package slava0135.dbg;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -11,10 +12,19 @@ import net.minecraft.util.Identifier;
 
 public class ModEntities {
   public static final Identifier LOOTBUG_ID = ModIdentifier.of("lootbug");
-  public static final EntityType<LootbugEntity> LOOTBUG =
-      Registry.register(Registries.ENTITY_TYPE, LOOTBUG_ID,
-          EntityType.Builder.create(LootbugEntity::new, SpawnGroup.CREATURE).dimensions(1.5f, 1f)
-              .maxTrackingRange(10).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, LOOTBUG_ID)));
+  public static final Identifier FLARE_ID = ModIdentifier.of("flare");
+
+  public static final EntityType<LootbugEntity> LOOTBUG = register(LOOTBUG_ID, EntityType.Builder
+      .create(LootbugEntity::new, SpawnGroup.CREATURE).dimensions(1.5f, 1f).maxTrackingRange(10));
+  public static final EntityType<FlareEntity> FLARE =
+      register(FLARE_ID, EntityType.Builder.<FlareEntity>create(FlareEntity::new, SpawnGroup.MISC)
+          .dropsNothing().dimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10));
+
+  private static <T extends Entity> EntityType<T> register(Identifier id,
+      EntityType.Builder<T> builder) {
+    return Registry.register(Registries.ENTITY_TYPE, id,
+        builder.build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, id)));
+  }
 
   public static void initialize() {
     FabricDefaultAttributeRegistry.register(LOOTBUG, LootbugEntity.createLootbugAttributes());

@@ -14,7 +14,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 
 public class ModBlocks {
   public static final Block NITRA_BLOCK = register("nitra_block", Block::new,
