@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class FlareEntity extends ThrownItemEntity {
@@ -38,9 +39,9 @@ public class FlareEntity extends ThrownItemEntity {
   protected void onCollision(HitResult hitResult) {
     super.onCollision(hitResult);
     if (this.getWorld() instanceof ServerWorld serverWorld) {
-      if (this.getBlockStateAtPos().isAir()) {
-        serverWorld.setBlockState(this.getBlockPos(), ModBlocks.FLARE_BLOCK.getDefaultState(),
-            Block.NOTIFY_LISTENERS);
+      if (this.getBlockStateAtPos().isAir()
+          && Block.sideCoversSmallSquare(serverWorld, getBlockPos().down(), Direction.UP)) {
+        serverWorld.setBlockState(this.getBlockPos(), ModBlocks.FLARE_BLOCK.getDefaultState());
       } else {
         this.dropItem(serverWorld, getDefaultItem());
       }
