@@ -30,5 +30,6 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
 								.apply(ApplyBonusLootFunction
 										.uniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
 								.apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.create(1, 4))))));
+		this.addDrop(ModBlocks.FLARE_BLOCK, block -> this.drops(ModItems.FLARE));
 	}
 }

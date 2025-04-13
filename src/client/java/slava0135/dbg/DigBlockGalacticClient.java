@@ -5,6 +5,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 
 @Environment(EnvType.CLIENT)
@@ -19,6 +20,9 @@ public class DigBlockGalacticClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(ModEntities.LOOTBUG, (context) -> {
 			return new LootbugEntityRenderer(context);
+		});
+		EntityRendererRegistry.register(ModEntities.FLARE, (context) -> {
+			return new FlyingItemEntityRenderer<>(context);
 		});
 
 		EntityModelLayerRegistry.registerModelLayer(LOOTBUG, LootbugEntityModel::getTexturedModelData);

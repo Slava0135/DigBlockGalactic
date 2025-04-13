@@ -4,8 +4,10 @@ import java.util.function.Function;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -14,13 +16,16 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 
 public class ModBlocks {
   public static final Block NITRA_BLOCK = register("nitra_block", Block::new,
       AbstractBlock.Settings.create().mapColor(MapColor.RED).instrument(NoteBlockInstrument.PLING)
           .strength(0.3F).sounds(BlockSoundGroup.GLASS).luminance(state -> 1),
       true);
+  public static final Block FLARE_BLOCK = register("flare_block", FlareBlock::new,
+      AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(state -> 14)
+          .sounds(BlockSoundGroup.IRON).pistonBehavior(PistonBehavior.DESTROY),
+      false);
 
   private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory,
       AbstractBlock.Settings settings, boolean shouldRegisterItem) {
