@@ -41,7 +41,9 @@ public class FlareEntity extends ThrownItemEntity {
 
   @Override
   protected void onEntityHit(EntityHitResult entityHitResult) {
-    this.deflect(FLARE, getControllingPassenger(), getOwner(), false);
+    if (this.getWorld() instanceof ServerWorld) {
+      this.deflect(FLARE, getControllingPassenger(), getOwner(), false);
+    }
   }
 
   @Override
