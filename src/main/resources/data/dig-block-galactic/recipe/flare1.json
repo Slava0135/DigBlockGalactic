@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "GWG",
+    "IGI"
+  ],
+  "key": {
+    "I": "minecraft:iron_nugget",
+    "G": "minecraft:glass_pane",
+    "W": "minecraft:glowstone_dust"
+  },
+  "result": {
+    "id": "dig-block-galactic:flare",
+    "count": 4
+  }
+}
