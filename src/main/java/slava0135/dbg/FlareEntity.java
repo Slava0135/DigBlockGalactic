@@ -1,10 +1,12 @@
 package slava0135.dbg;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ProjectileDeflection;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -15,11 +17,11 @@ import net.minecraft.world.World;
 
 public class FlareEntity extends ThrownItemEntity {
   private final ProjectileDeflection FLARE = (projectile, hitEntity, random) -> {
-		float f = 170.0F + random.nextFloat() * 20.0F;
-		projectile.setVelocity(projectile.getVelocity().multiply(-0.1));
-		projectile.setYaw(projectile.getYaw() + f);
-		projectile.lastYaw += f;
-		projectile.velocityDirty = true;
+    float f = 170.0F + random.nextFloat() * 20.0F;
+    projectile.setVelocity(projectile.getVelocity().multiply(-0.1));
+    projectile.setYaw(projectile.getYaw() + f);
+    projectile.lastYaw += f;
+    projectile.velocityDirty = true;
   };
 
   public FlareEntity(EntityType<? extends FlareEntity> entityType, World world) {
@@ -53,9 +55,12 @@ public class FlareEntity extends ThrownItemEntity {
       if (hitResult.getSide() != Direction.UP) {
         this.deflect(FLARE, getControllingPassenger(), getOwner(), false);
       } else {
-        if (this.getBlockStateAtPos().isAir()
+        var blockState = this.getBlockStateAtPos();
+        if ((blockState.isAir()
+            || (blockState.isOf(Blocks.WATER) && blockState.getFluidState().isStill()))
             && Block.sideCoversSmallSquare(serverWorld, getBlockPos().down(), Direction.UP)) {
-          serverWorld.setBlockState(this.getBlockPos(), ModBlocks.FLARE_BLOCK.getDefaultState());
+          serverWorld.setBlockState(this.getBlockPos(),
+              ((FlareBlock) ModBlocks.FLARE_BLOCK).getThrowState(blockState));
         } else {
           this.dropItem(serverWorld, getDefaultItem());
         }

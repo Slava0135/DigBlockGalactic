@@ -48,6 +48,10 @@ public class FlareBlock extends Block implements Waterloggable {
     return null;
   }
 
+  public BlockState getThrowState(BlockState state) {
+    return getDefaultState().with(WATERLOGGED, state.getFluidState().getFluid() == Fluids.WATER);
+  }
+
   @Override
   protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos,
       ShapeContext context) {
