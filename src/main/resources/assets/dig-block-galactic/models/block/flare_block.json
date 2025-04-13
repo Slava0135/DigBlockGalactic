@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "dig-block-galactic:block/flare_block",
-		"particle": "flare"
+		"particle": "block/yellow_stained_glass"
 	},
 	"elements": [
 		{
