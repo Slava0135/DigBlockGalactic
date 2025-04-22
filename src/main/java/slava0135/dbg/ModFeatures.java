@@ -14,9 +14,12 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class ModFeatures {
   public static final Identifier NITRA_BLOB_FEATURE_KEY = ModIdentifier.of("nitra_blob");
+  public static final Identifier ROOF_WEB_FEATURE_KEY = ModIdentifier.of("roof_web");
 
   public static final Feature<DefaultFeatureConfig> NITRA_BLOB_FEATURE =
       registerFeature(NITRA_BLOB_FEATURE_KEY, new NitraBlobFeature(DefaultFeatureConfig.CODEC));
+  public static final Feature<DefaultFeatureConfig> ROOF_WEB_FEATURE =
+      registerFeature(ROOF_WEB_FEATURE_KEY, new RoofWebFeature(DefaultFeatureConfig.CODEC));
 
   private static <C extends FeatureConfig, F extends Feature<C>> F registerFeature(
       Identifier identifier, F feature) {
@@ -27,5 +30,8 @@ public class ModFeatures {
     BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
         GenerationStep.Feature.UNDERGROUND_ORES,
         RegistryKey.of(RegistryKeys.PLACED_FEATURE, NITRA_BLOB_FEATURE_KEY));
+    BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
+        GenerationStep.Feature.UNDERGROUND_DECORATION,
+        RegistryKey.of(RegistryKeys.PLACED_FEATURE, ROOF_WEB_FEATURE_KEY));
   }
 }
