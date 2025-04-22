@@ -28,7 +28,7 @@ public class ModFeatures {
 
   public static void initialize() {
     BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-        GenerationStep.Feature.UNDERGROUND_ORES,
+        GenerationStep.Feature.UNDERGROUND_DECORATION,
         RegistryKey.of(RegistryKeys.PLACED_FEATURE, NITRA_BLOB_FEATURE_KEY));
     BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
         GenerationStep.Feature.UNDERGROUND_DECORATION,

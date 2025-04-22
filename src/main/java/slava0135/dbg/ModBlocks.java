@@ -4,7 +4,6 @@ import java.util.function.Function;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -20,7 +19,7 @@ import net.minecraft.sound.BlockSoundGroup;
 public class ModBlocks {
   public static final Block NITRA_BLOCK = register("nitra_block", Block::new,
       AbstractBlock.Settings.create().mapColor(MapColor.RED).instrument(NoteBlockInstrument.PLING)
-          .strength(0.3F).sounds(BlockSoundGroup.GLASS).luminance(state -> 1),
+          .strength(0.3F).sounds(BlockSoundGroup.GLASS).luminance(state -> 3),
       true);
   public static final Block FLARE_BLOCK = register("flare_block", FlareBlock::new,
       AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(state -> 14)
