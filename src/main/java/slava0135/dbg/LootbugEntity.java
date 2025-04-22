@@ -1,6 +1,7 @@
 package slava0135.dbg;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;
@@ -21,8 +22,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.WorldAccess;
 
 public class LootbugEntity extends AnimalEntity {
   protected LootbugEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -46,9 +48,9 @@ public class LootbugEntity extends AnimalEntity {
         || stack.isIn(ItemTags.REPAIRS_GOLD_ARMOR) || stack.isOf(ModItems.NITRA);
   }
 
-  @Override
-  public boolean canSpawn(WorldView world) {
-    return world.doesNotIntersectEntities(this) && world.isInHeightLimit(0);
+  public static boolean canSpawn(EntityType<LootbugEntity> type, WorldAccess world,
+      SpawnReason spawnReason, BlockPos pos, Random random) {
+    return world.getBlockState(pos.down()).isOf(Blocks.DEEPSLATE) && pos.getY() <= 0;
   }
 
   @Override

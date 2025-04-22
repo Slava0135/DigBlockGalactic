@@ -4,11 +4,14 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnLocationTypes;
+import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
 
 public class ModEntities {
   public static final Identifier LOOTBUG_ID = ModIdentifier.of("lootbug");
@@ -28,5 +31,7 @@ public class ModEntities {
 
   public static void initialize() {
     FabricDefaultAttributeRegistry.register(LOOTBUG, LootbugEntity.createLootbugAttributes());
+    SpawnRestriction.register(LOOTBUG, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, LootbugEntity::canSpawn);
+    // TODO: add mobs to biome features
   }
 }
