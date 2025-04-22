@@ -41,7 +41,8 @@ public class RoofWebFeature extends Feature<DefaultFeatureConfig> {
         horizontalSlope[i] *= -1;
       }
     }
-    // actually, halves were supposed to remain in one "plane", but by accident i made them form a curve (which is cooler)... 
+    // actually, halves were supposed to remain in one "plane", but by accident i made them form a
+    // curve (which is cooler)...
     if (random.nextBoolean()) {
       for (var x = 1; x < length; x++) {
         var z = horizontalSlope[x];
@@ -85,7 +86,6 @@ public class RoofWebFeature extends Feature<DefaultFeatureConfig> {
 
   private boolean placeWebStripe(StructureWorldAccess structureWorldAccess, BlockPos blockPos,
       int size) {
-    DigBlockGalactic.LOGGER.info(blockPos.toShortString());
     if (!isSurface(structureWorldAccess, blockPos)) {
       // stripe can be offset one tile up or down from previous
       blockPos = blockPos.up();
