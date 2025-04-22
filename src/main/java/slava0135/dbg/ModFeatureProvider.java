@@ -52,6 +52,8 @@ public class ModFeatureProvider extends FabricDynamicRegistryProvider {
       Registerable<ConfiguredFeature<?, ?>> registerable) {
     registerable.register(configuredFeatureKey(ModFeatures.NITRA_BLOB_FEATURE_KEY),
         new ConfiguredFeature<>(ModFeatures.NITRA_BLOB_FEATURE, DefaultFeatureConfig.INSTANCE));
+    registerable.register(configuredFeatureKey(ModFeatures.ROOF_WEB_FEATURE_KEY),
+        new ConfiguredFeature<>(ModFeatures.ROOF_WEB_FEATURE, DefaultFeatureConfig.INSTANCE));
   }
 
   private static List<PlacementModifier> oreModifiers(PlacementModifier countModifier,
@@ -76,6 +78,11 @@ public class ModFeatureProvider extends FabricDynamicRegistryProvider {
         new PlacedFeature(
             lookup.getOptional(configuredFeatureKey(ModFeatures.NITRA_BLOB_FEATURE_KEY)).get(),
             oreModifiersWithCount(4,
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)))));
+    registerable.register(placedFeatureKey(ModFeatures.ROOF_WEB_FEATURE_KEY),
+        new PlacedFeature(
+            lookup.getOptional(configuredFeatureKey(ModFeatures.ROOF_WEB_FEATURE_KEY)).get(),
+            oreModifiersWithCount(12,
                 HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)))));
   }
 }
