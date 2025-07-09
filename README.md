@@ -2,6 +2,8 @@
 
 Minecraft (1.21.5) mod based on the game Deep Rock Galactic by Ghost Ship Games.
 
+![showcase](./showcase/dig-block-galactic.png)
+
 ## Progress
 
 Mod is unfinished (because Minecraft modding sucks).
