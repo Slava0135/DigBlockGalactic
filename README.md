@@ -1,6 +1,6 @@
 # DigBlockGalactic
 
-Mod based on the game Deep Rock Galactic by Ghost Ship Games.
+Minecraft (1.21.5) mod based on the game Deep Rock Galactic by Ghost Ship Games.
 
 ## Progress
 
